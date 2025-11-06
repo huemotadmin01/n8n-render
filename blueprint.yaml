@@ -1,6 +1,50 @@
 services:
-- type: web
-  name: n8n
-  env: docker
-  plan: free
-  autoDeploy: true
+  - type: web
+    name: n8n
+    env: docker
+    plan: free
+    autoDeploy: true
+    healthCheckPath: /healthz
+    envVars:
+      - key: DB_TYPE
+        value: postgresdb
+      - key: DB_POSTGRESDB_DATABASE
+        value: n8n_db_0o6f
+      - key: DB_POSTGRESDB_HOST
+        value: dpg-d45hicmuk2gs73ci49rg-a.singapore-postgres.render.com
+      - key: DB_POSTGRESDB_PORT
+        value: 5432
+      - key: DB_POSTGRESDB_USER
+        value: n8n_db_0o6f_user
+      - key: DB_POSTGRESDB_PASSWORD
+        sync: false
+      - key: DB_POSTGRESDB_SCHEMA
+        value: public
+      - key: N8N_HOST
+        value: n8n-render-98ji.onrender.com
+      - key: N8N_PORT
+        value: 5678
+      - key: N8N_PROTOCOL
+        value: https
+      - key: WEBHOOK_URL
+        value: https://n8n-render-98ji.onrender.com/
+      - key: N8N_ENCRYPTION_KEY
+        sync: false
+      - key: EXECUTIONS_MODE
+        value: regular
+      - key: EXECUTIONS_DATA_SAVE_ON_ERROR
+        value: all
+      - key: EXECUTIONS_DATA_SAVE_ON_SUCCESS
+        value: all
+      - key: EXECUTIONS_DATA_SAVE_MANUAL_EXECUTIONS
+        value: true
+      - key: GENERIC_TIMEZONE
+        value: Asia/Kolkata
+      - key: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
+        value: false
+
+databases:
+  - name: n8n-db
+    databaseName: n8n_db_0o6f
+    user: n8n_db_0o6f_user
+    plan: free
