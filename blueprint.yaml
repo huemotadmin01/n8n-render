@@ -20,6 +20,8 @@ services:
         sync: false
       - key: DB_POSTGRESDB_SCHEMA
         value: public
+      - key: DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED
+        value: false
       - key: N8N_HOST
         value: n8n-render-98ji.onrender.com
       - key: N8N_PORT
