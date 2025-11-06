@@ -42,9 +42,3 @@ services:
         value: Asia/Kolkata
       - key: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
         value: false
-
-databases:
-  - name: n8n-db
-    databaseName: n8n_db_0o6f
-    user: n8n_db_0o6f_user
-    plan: free
