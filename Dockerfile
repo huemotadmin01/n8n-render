@@ -4,5 +4,5 @@ FROM n8nio/n8n:latest
 # Expose n8n’s default port
 EXPOSE 5678
 
-# Ensure migrations run before start (via entrypoint script)
-ENTRYPOINT ["/bin/sh", "-c", "n8n migration:run && exec n8n start"]
+# Run database migrations (new syntax) then start n8n
+ENTRYPOINT ["/bin/sh", "-c", "n8n db:run-migrations && exec n8n start"]
